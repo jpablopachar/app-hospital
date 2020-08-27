@@ -14,4 +14,4 @@ const validFields = (req, res = response, next) => {
   next();
 };
 
-module.exports = validFields;
+module.exports = { validFields };

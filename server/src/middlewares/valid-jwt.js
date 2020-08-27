@@ -6,7 +6,7 @@ const validJWT = (req, res, next) => {
   if (!token) {
     return res.status(401).json({
       ok: false,
-      message: 'No existe token en la petición';
+      message: 'No existe token en la petición',
     });
   }
 
@@ -24,4 +24,4 @@ const validJWT = (req, res, next) => {
   }
 };
 
-module.exports = validJWT;
+module.exports = { validJWT };
