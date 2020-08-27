@@ -1,4 +1,5 @@
 if (process.env.NODE_ENV !== 'production') {
+  // eslint-disable-next-line import/no-extraneous-dependencies
   require('dotenv').config();
 }
 
@@ -21,11 +22,15 @@ app.use(express.json());
 app.use(cors());
 
 /*                  Static Files                */
-// app.use('/images', express.static(path.join(__dirname, './public')));
+app.use(express.static(path.join(__dirname, './public')));
 
 /*                   Routes                      */
-// app.use('/api/usuario', require('../routes/UsuarioRoute'));
-// app.use('/api/publicaciones', require('../routes/PublicacionRoute'));
+app.use('/api/users', require('./routes/user'));
+app.use('/api/hospitals', require('./routes/hospital'));
+app.use('/api/doctors', require('./routes/doctor'));
+app.use('/api/all', require('./routes/search'));
+app.use('/api/login', require('./routes/auth'));
+app.use('/api/upload', require('./routes/uploads'));
 
 app.listen(app.get('port'), () => {
   console.log('Entorno: ', process.env.NODE_ENV);
